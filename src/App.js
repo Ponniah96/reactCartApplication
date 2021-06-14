@@ -35,7 +35,7 @@ class App extends React.Component{
     axios.get(Api).then((res)=>{
       this.setState({isLoading:false,cartData:res.data})
     });
-    console.log(this.state.addCartArray.length);
+    console.log(Api);
   }
 
   searchFunction(e){
