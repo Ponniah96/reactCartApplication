@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://kit.fontawesome.com/74ec50ab0f.js" crossorigin="anonymous"></script>
+    <style>
+        .loading-screen{
+            position: relative;
+            height: 100vh;
+            width: 100vw;
+            background-color: white;
+        }
+        .loader-section{
+            position: absolute;
+            top: 50%;
+            left:50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+        .loader-image{
+            color:red;
+            font-size:24px !important
+        }
+        .loader-text{
+            font-size: 20px;
+            padding-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="loading-screen">
+        <div class="loader-section">
+            <div class="loader-image"><i class="fas fa-sync-alt fa-spin"></i></div>
+            <div class="loader-text">Loading...</div>
+        </div>
+    </div>
+</body>
+</html>

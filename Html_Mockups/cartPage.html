@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart Page</title>
+    <script src="https://kit.fontawesome.com/74ec50ab0f.js" crossorigin="anonymous"></script>
+</head>
+<style>
+    body{
+        margin: 0px;
+    }
+
+    .cart-page-header-section-name{
+        background-color: #eb222a;
+        color: white;
+        font-family: 'Papyrus';
+        padding: 20px;
+        text-align: center;
+        margin: 0px;
+    }
+    @media(max-width:565px){
+        .cart-page-header-section-name{
+            font-size: 20px;
+        } 
+    }
+
+    /***Bootstrap Basic Class Starts ***/
+
+        .row{
+            width: 100%;
+        }
+
+        .column-3{
+            width: 33.3%;
+        }
+
+        @media (max-width:768px) {
+            .column-3{
+                width: 100%;
+            }
+        }
+
+        @media(max-width:767px){
+            .col-sm-none{
+                display: none;
+            }
+        }
+    /***Bootstrap Basic Class Ends ***/
+
+
+
+    /***Float Basic Class Starts ***/
+
+        .float-parent::after{
+            content: "";
+            clear: both;
+            display: table;
+        }
+        .float{
+            float: left;
+        }
+
+    /***Float Basic Class Ends ***/
+
+
+    /***Cart Mainpulations Class Starts ***/
+        .cart-page-manipulations-section{
+            padding: 50px 0px;
+        }
+
+        @media(max-width:768px){
+            .cart-page-manipulations-section{
+                padding: 40px 0px;
+            }
+        }
+       
+        .cart-product-total-cart-section{
+            margin: 10px;
+        }
+
+
+        .cart-product-filter-section{
+            margin: 10px;
+        }
+
+        .cart-product-search-section{
+            margin: 10px;
+            border :1px solid #eb222a;
+            border-radius: 8px;
+            padding: 12px 20px;
+            color: black;
+        }
+
+        .cart-product-search-section:focus-visible{
+           outline: none;
+        }
+
+        .white-CTA{
+            border-radius: 4px;
+            border: 1px solid #eb222a;
+            color: #eb222a;
+            padding: 12px 20px;
+            background: white;
+            cursor: pointer;
+        }
+
+        .theme-CTA{
+            border-radius: 4px;
+            border: 1px solid #eb222a;
+            background:#eb222a;
+            color: white;
+            padding: 12px 20px;
+            cursor: pointer;
+        }
+
+        .text-center{
+            text-align: center;
+        }
+
+        .borderRight{
+           box-shadow: -1px 0px 0px 0px #eb222a;
+        }
+
+        @media(max-width:768px){
+            .borderRight{
+                box-shadow: none;
+            }
+        }
+
+        .icon-theme-color{
+            padding-left: 15px;
+            color:#eb222a;
+            font-size: 16px;
+        }
+
+        .icon-theme-background{
+            padding-left: 15px;
+            color: white;
+            font-size: 14px;
+        }
+    /***Cart Manipulations Class Ends ***/
+        
+        .cart-page-body-section td,
+        .cart-page-body-section th{
+            padding:15px 10px;
+        }
+        
+        .cart-product-section-head tr{
+            background: #eb222a;
+            color: white;
+        }
+
+        .cart-product-section-body td{
+            border-bottom: 1px solid #d0d0d0;
+            border-left: 0px;
+            border-right: 0px;
+        }
+
+       /* @media(min-width:768px)  {
+        .cart-product-title-head,
+        .cart-product-title-body{
+            max-width: 40%;
+        } 
+
+        .cart-product-date-created-head,
+        .cart-product-date-created-body,
+        .cart-product-date-created-head,
+        .cart-product-date-created-body{
+            max-width: 15%;
+        }
+
+        .cart-product-original-price-head,
+        .cart-product-original-price-body{
+            max-width: 20%;
+        }    
+
+          .cart-product-id-head,
+          .cart-product-id-body{
+              max-width: 10%;
+          }  
+
+       } */
+
+        .cart-product-title-body{
+            color: #eb222a;
+            text-decoration: underline;
+        }
+        
+    /*** Cart Product Display Section ***/
+
+    /***Total Cart section ***/
+
+        .dropdown-content{
+            display: none;
+            position: absolute;
+            min-height: 150px;
+            background-color: white;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            border: 1px solid #d0d0d0;
+            border-radius: 8px;
+            text-align: left;
+        }
+
+        .dropdown-individual{
+            padding: 15px;
+            color: black;
+            margin: 0;
+        }
+
+        .dropdown-individual:hover{
+            background-color: lightgray;
+        }
+        
+    /*** Total Cart Section **/
+</style>
+
+<script>
+    function test(){
+        alert('test');
+    }
+</script>
+<body>
+    <div class="cart-page">
+        <div class="cart-page-header-section">
+            <h1 class="cart-page-header-section-name">Welcome to Cart Page</h1>
+        </div>
+        <div class="cart-page-body-section">
+            <div class="row float-parent cart-page-manipulations-section">
+                <div class="float column-3 text-center" >
+                    <input class="cart-product-search-section" placeholder="Enter Product Name"></input>
+                </div>
+                <div class="float column-3  text-center borderRight" >
+                    <button class="cart-product-filter-section white-CTA" onclick="test()">Filter <i class="fa fa-solid fa-filter icon-theme-color"></i></button>
+                </div>
+                <div class="float column-3  text-center borderRight">
+                        <button class="cart-product-total-cart-section theme-CTA">Total Cart <i class="fa fa-solid fa-cart-plus icon-theme-background"><sup style="border-radius: 25px;border: 1px solid;padding: 2px 6px;font-size:8px">0</sup></i></button>
+                        <div class="dropdown-content" >
+                            <p class="dropdown-individual">1.This is test this is test this is test this is test</p>
+                            <p class="dropdown-individual">2.this is also test</p>
+                        </div>
+                </div>
+            </div>
+            <table class="row text-center cart-product-section">
+                <thead class="cart-product-section-head">
+                    <tr>
+                        <th class="cart-product-id-head">Product ID <i class="fas fa-sort-numeric-down-alt icon-theme-background"></i> <i class="fas fa-sort-numeric-up icon-theme-background"></i></th>
+                        <th class="cart-product-title-head">Product Name <i class="fas fa-sort-alpha-down-alt icon-theme-background"></i> <i class="fas fa-sort-alpha-up icon-theme-background"></i></th>
+                        <th class="cart-product-original-price-head">Price <i class="fas fa-sort-numeric-down-alt icon-theme-background"></i> <i class="fas fa-sort-numeric-up icon-theme-background"></i></th>
+                        <th class="col-sm-none cart-product-date-created-head">Date <i class="fas fa-sort-numeric-down-alt icon-theme-background"></i> <i class="fas fa-sort-numeric-up icon-theme-background"></i></th>
+                        <th class="col-sm-none cart-product-cta-head">Add Cart</th>
+                    </tr>
+                </thead>
+                <tbody class="cart-product-section-body">
+                    <tr>
+                        <td class="cart-product-id-body">1</td>
+                        <td class="cart-product-title-body">This is for testing Purpose to create tableThis is for testing Purpose to create table</td>
+                        <td class="cart-product-original-price-body">10000</td>
+                        <td class="col-sm-none cart-product-date-created-body">11-10-1996</td>
+                        <td class="col-sm-none cart-product-cta-body"><button class="theme-CTA">Add Cart</button></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td class="cart-product-title-body">This is for testing Purpose to create table</td>
+                        <td>10000</td>
+                        <td class="col-sm-none">11-10-1996</td>
+                        <td class="col-sm-none"><button class="theme-CTA">Add Cart</button></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td class="cart-product-title-body">This is for testing Purpose to create table</td>
+                        <td>10000</td>
+                        <td class="col-sm-none">11-10-1996</td>
+                        <td class="col-sm-none"><button class="theme-CTA">Add Cart</button></td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+</body>
+</html>

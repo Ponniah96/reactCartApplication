@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://kit.fontawesome.com/74ec50ab0f.js" crossorigin="anonymous"></script>
+    <style>
+         /***Bootstrap Basic Class Starts ***/
+
+         .row{
+            width: 100%;
+        }
+
+        .column-25{
+            width: 25%;
+        }
+
+        .column-75{
+            width: 75%;
+        }
+
+        @media(max-width:767px){
+            .col-sm-none{
+                display: none;
+            }
+        }
+    /***Bootstrap Basic Class Ends ***/
+
+
+
+    /***Float Basic Class Starts ***/
+
+        .float-parent::after{
+            content: "";
+            clear: both;
+            display: table;
+        }
+        .float{
+            float: left;
+        }
+
+    /***Float Basic Class Ends ***/
+
+
+    /***Popup Basic Class Starts ***/
+
+        body{
+            margin: 0;
+        }
+
+        .popup-background{
+            background-color: grey;
+            height: inherit;
+        }
+
+        .popup-page{
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        .popup-section{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 700px;
+            background-color: white;
+            color: black;
+            border: 1px solid #d0d0d0;
+            box-shadow: 0px 1px 3px 1px;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        @media(max-width:565px){
+        .popup-section{
+                width: 400px;
+        }
+        }
+
+        @media(max-width:400px){
+        .popup-section{
+                width: 350px;
+        }
+        }
+
+        .popup-product-details .float-parent{
+            padding: 10px 0px;
+        }
+
+        .popup-close{
+            font-size: 24px;
+            float: right;
+            cursor: pointer;
+        }
+
+    /***Popup Basic Class Ends ***/
+
+    </style>
+    
+</head>
+<body>
+    <div class="popup-page">
+        <div class="popup-background"  onclick="closePopup()"></div>
+        <div class="popup-section">
+            <div class="row float-parent popup-product-header">
+                <h3 class="float">Product Details</h3>
+                <i class="fas fa-times popup-close " onclick="closePopup()"></i>
+            </div>
+            <div class="popup-images"></div>
+            <div class="popup-product-details">
+                <div class="row float-parent popup-product-name-section">
+                    <div class="column-25 float">Name:</div>
+                    <div class="column-75 float"><b>Product Name</b></div>
+                </div>
+                <div class="row float-parent popup-product-name-section">
+                    <div class="column-25 float">Decription:</div>
+                    <div class="column-75 float"><b>Product Description</b></div>
+                </div>
+                <div class="row float-parent popup-product-name-section">
+                    <div class="column-25 float">Price:</div>
+                    <div class="column-75 float"><b>Product Price</b></div>
+                </div>
+                <div class="row float-parent popup-product-name-section">
+                    <div class="column-25 float">Ratings:</div>
+                    <div class="column-75 float"><b>Product Ratings</b></div>
+                </div>
+                <div class="row float-parent popup-product-name-section">
+                    <div class="column-25 float">Express Delivery:</div>
+                    <div class="column-75 float"><b>True/ False</b></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function closePopup(){
+            document.getElementsByClassName('popup-page')[0].style.display='none';
+        }
+    </script>
+</body>
+</html>

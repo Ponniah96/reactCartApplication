@@ -1,0 +1,22 @@
+@import "global";
+
+
+.cart-loading{
+    color: $theme;
+}
+
+.loading-screen{
+    @include popupBackground;
+}
+.loader-section{
+    @include popupSection;
+    text-align: center;
+}
+.loader-image{
+    color:red;
+    font-size:24px !important
+}
+.loader-text{
+    font-size: 20px;
+    padding-top: 10px;
+}
