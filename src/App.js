@@ -5,7 +5,7 @@ import './styles/popupPage.scss';
 import Loader from './Loader';
 import Popup from './popupPage';
 import axios from "axios";
-const Api='//mocsyamtestapi-env.eba-dvawv2zg.ap-south-1.elasticbeanstalk.com/products/?pageNumber=0';
+const Api='http://mocsyamtestapi-env.eba-dvawv2zg.ap-south-1.elasticbeanstalk.com/products/?pageNumber=0';
 
 class App extends React.Component{
   constructor(props){
@@ -32,10 +32,10 @@ class App extends React.Component{
   }
 
   componentDidMount(){
-    axios.get(Api).then((res)=>{
+    const corsurl = 'https://cors-anywhere.herokuapp.com';
+    axios.get(corsurl+Api).then((res)=>{
       this.setState({isLoading:false,cartData:res.data})
     });
-    console.log(Api);
   }
 
   searchFunction(e){
