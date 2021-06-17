@@ -5,7 +5,7 @@ import './styles/popupPage.scss';
 import Loader from './Loader';
 import Popup from './popupPage';
 import axios from "axios";
-const Api='mocsyamtestapi-env.eba-dvawv2zg.ap-south-1.elasticbeanstalk.com/products/?pageNumber=0';
+const Api='/mocsyamtestapi-env.eba-dvawv2zg.ap-south-1.elasticbeanstalk.com/products/?pageNumber=0';
 
 class App extends React.Component{
   constructor(props){
