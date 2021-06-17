@@ -32,8 +32,8 @@ class App extends React.Component{
   }
 
   componentDidMount(){
-    const corsurl = 'https://cors-anywhere.herokuapp.com';
-    axios.get(corsurl+Api).then((res)=>{
+    const corsUrl = 'https://cors-anywhere.herokuapp.com';
+    axios.get(corsUrl+Api).then((res)=>{
       this.setState({isLoading:false,cartData:res.data})
     });
   }
