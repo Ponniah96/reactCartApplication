@@ -72,13 +72,18 @@ body{
 
 @media(max-width:565px){
 .popup-section{
-       width: 400px;
+       width: 90%;
+       top: 20px;
+       bottom: 20px;
+       transform: translate(-50%, 0%);
 }
 }
 
 @media(max-width:400px){
 .popup-section{
-       width: 350px;
+       width: 90%;
+       top: 20px;
+       bottom: 20px;
 }
 }
 

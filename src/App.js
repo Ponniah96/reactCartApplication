@@ -31,7 +31,7 @@ const Apidata=[
     "productImage": [
       {
         "id": 1,
-        "imageUrl": amd1
+        "imageUrl": amd3
       },
       {
         "id": 2,
@@ -39,7 +39,7 @@ const Apidata=[
       },
       {
         "id": 3,
-        "imageUrl": amd3
+        "imageUrl": amd1
       }
     ],
     "rating": 6,
@@ -57,15 +57,15 @@ const Apidata=[
     "productImage": [
       {
         "id": 4,
-        "imageUrl": zeb1
-      },
-      {
-        "id": 5,
         "imageUrl": zeb2
       },
       {
-        "id": 6,
+        "id": 5,
         "imageUrl": zeb3
+      },
+      {
+        "id": 6,
+        "imageUrl": zeb1
       }
     ],
     "rating": 4,
@@ -194,18 +194,30 @@ class App extends React.Component{
     const {cartData}=this.state;
     this.setState(state=>({sortProductName: !state.sortProductName}));
     let sortArray=[];
+    console.log(cartData.title.sort())
     if(this.state.sortProductName){
       sortArray=cartData.sort(function(a,b){
-        return (a.title.toLowerCase()-b.title.toLowerCase())>-1;
+        //return (a.title.toLowerCase()-b.title.toLowerCase())>-1;
+        var textA=a.title.split('',1);
+        var textB=b.title.split('',1);
+        //console.log(textA.toLowerCase(),textB.toLowerCase())
+        console.log(textA[0],textB[0].toUpperCase())
+        return (textA[0]-textB[0].toUpperCase())>-1;
       })
       this.setState({cartData:sortArray});
     }
     else{
         sortArray=cartData.sort(function(a,b){
-          return (b.title.toLowerCase()-a.title.toLowerCase())>-1;
+          //return (b.title.toLowerCase()-a.title.toLowerCase())>-1;
+          var textA=a.title.split('',1);
+          var textB=b.title.split('',1);
+          //console.log(textA.toLowerCase(),textB.toLowerCase())
+          console.log(textA[0],textB[0].toUpperCase())
+          return (textA[0]-textB[0].toUpperCase())>-1;
         })
         this.setState({cartData:sortArray});
       }
+      console.log(sortArray);
   }
  
   sortPrice(){
@@ -282,7 +294,6 @@ class App extends React.Component{
   // }
 
   openPopup(e,data){
-    console.log(e);
     this.setState({popupData:e});
     this.setState({showPopup:true});
   }
@@ -323,7 +334,7 @@ class App extends React.Component{
                       <input className="cart-product-search-section" placeholder="Enter Product Name" type="text" value={this.state.searchValue} onChange={this.searchFunction}></input>
                   </div>
                   <div className="float column-3  text-center borderRight" >
-                      <button className="cart-product-filter-section white-CTA">Filter <i className="fa fa-solid fa-filter icon-theme-color"></i></button>
+                      <button className="cart-product-filter-section white-CTA tooltip">Filter  <i className="fa fa-solid fa-filter icon-theme-color"></i><span className="tooltiptext">Yet To Start</span></button>
                   </div>
                   <div className="float column-3  text-center borderRight">
                       <button className="cart-product-total-cart-section theme-CTA"  onClick={this.clickTotalCart.bind(this)}>Total Cart <i className="fa fa-solid fa-cart-plus icon-theme-background"><sup className='cart-product-total-cart-section-superscript'>{addCartArray.length}</sup></i></button>
@@ -337,9 +348,9 @@ class App extends React.Component{
                       <tr>
                           <th className="cart-product-id-head" onClick={this.sortID}> Product ID{this.state.sortProductID?<i className="fas fa-sort-numeric-down-alt icon-theme-background"></i>:<i className="fas fa-sort-numeric-up icon-theme-background"></i>} </th>
                           <th className="cart-product-title-head"onClick={this.sortName}> Product ID{this.state.sortProductName?<i className="fas fa-sort-alpha-down-alt icon-theme-background"></i>:<i className="fas fa-sort-alpha-up icon-theme-background"></i>}</th>
-                          <th className="cart-product-original-price-head cart-product-price-sort-section" onClick={this.sortPrice}> Price{this.state.sortPriceText?<i className="fas fa-sort-numeric-down-alt icon-theme-background"></i>:<i className="fas fa-sort-numeric-up icon-theme-background"></i>} </th>
+                          <th className="col-sm-none cart-product-original-price-head cart-product-price-sort-section" onClick={this.sortPrice}> Price{this.state.sortPriceText?<i className="fas fa-sort-numeric-down-alt icon-theme-background"></i>:<i className="fas fa-sort-numeric-up icon-theme-background"></i>} </th>
                           <th className="col-sm-none cart-product-date-created-head"onClick={this.sortDate}>Date {this.state.sortdateValue ?<i className="fas fa-sort-numeric-down-alt icon-theme-background"></i>:<i className="fas fa-sort-numeric-up icon-theme-background"></i>} </th>
-                          <th className="col-sm-none cart-product-cta-head">Add Cart</th>
+                          <th className="cart-product-cta-head">Add Cart</th>
                       </tr>
                   </thead>
                   <tbody className="cart-product-section-body cart-product-section">
@@ -347,9 +358,9 @@ class App extends React.Component{
                       <tr key={data.id} className="cart-product-individual-section">
                           <td className="cart-product-id-body">{data.id}</td>
                           <td className="cart-product-title-body cart-product-title" onClick={this.openPopup.bind(this,data)}>{data.title}</td>
-                          <td className="cart-product-original-price-body cart-product-original-price"><b style={{fontSize:'16px'}}>&#8377;{data.price}</b><span style={{textDecoration:'line-through',marginLeft:'5px',fontSize:'12px'}}>(&#8377;{data.originalPrice})</span></td>
+                          <td className="col-sm-none cart-product-original-price-body cart-product-original-price"><b style={{fontSize:'16px'}}>&#8377;{data.price}</b><span style={{textDecoration:'line-through',marginLeft:'5px',fontSize:'12px'}}>(&#8377;{data.originalPrice})</span></td>
                           <td className="col-sm-none cart-product-date-created-body cart-product-date-created">{data.createdDate}</td>
-                          <td className="col-sm-none cart-product-cta-body"><button className="theme-CTA" onClick={this.addCart.bind(this,data)}>Add Cart</button></td>
+                          <td className="cart-product-cta-body"><button className="theme-CTA" onClick={this.addCart.bind(this,data)}>Add Cart</button></td>
                       </tr>
                       )}
                   </tbody>

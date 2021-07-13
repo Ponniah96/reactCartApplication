@@ -5,57 +5,59 @@ import "./styles/cartPage.scss";
 
 class productPopupPage extends React.Component{
 
+    constructor(){
+        super();
+        this.state={slideIndex:1};
+    }
+
     componentDidMount(){
-        var slideIndex = 1;
-        var i,n=1;
+        var i;
         var slides = document.getElementsByClassName("mySlides");
-        var dots = document.getElementsByClassName("dot");
-        if (n > slides.length) {slideIndex = 1}    
-        if (n < 1) {slideIndex = slides.length}
         for (i = 0; i < slides.length; i++) {
             slides[i].style.display = "none";  
         }
-        for (i = 0; i < dots.length; i++) {
-            dots[i].className = dots[i].className.replace(" active", "");
-        }
-        slides[slideIndex-1].style.display = "block";  
-        dots[slideIndex-1].className += " active";
+        slides[0].style.display = "block";
     }
 
     plusSlides(n,e) {
-        console.log(e,n)
-        var slideIndex = n+1;
-        var i;
+        this.setState(state=>({slideIndex:state.slideIndex+n}));
+        var slideDisplay = this.state.slideIndex + n;
+        console.log('SlideDisplay Value: ',slideDisplay);
+        var i, n1=slideDisplay;
         var slides = document.getElementsByClassName("mySlides");
-        var dots = document.getElementsByClassName("dot");
-        if (n > slides.length) {slideIndex = 1}    
-        if (n < 1) {slideIndex = slides.length}
         for (i = 0; i < slides.length; i++) {
             slides[i].style.display = "none";  
         }
-        for (i = 0; i < dots.length; i++) {
-            dots[i].className = dots[i].className.replace(" active", "");
+        if (n1 > slides.length) {
+            slideDisplay=1
+            this.setState({slideIndex: 1})
+        }    
+        else if (n1 < 1) {
+            slideDisplay=slides.length;
+            this.setState({slideIndex: slides.length})
         }
-        slides[slideIndex-1].style.display = "block";  
-        dots[slideIndex-1].className += " active";
+        slides[slideDisplay-1].style.display = "block"; 
     }
-      
-       currentSlide(n,e) {
-        var slideIndex = n;
-        var i;
-        var slides = document.getElementsByClassName("mySlides");
-        var dots = document.getElementsByClassName("dot");
-        if (n > slides.length) {slideIndex = 1}    
-        if (n < 1) {slideIndex = slides.length}
-        for (i = 0; i < slides.length; i++) {
-            slides[i].style.display = "none";  
-        }
-        for (i = 0; i < dots.length; i++) {
-            dots[i].className = dots[i].className.replace(" active", "");
-        }
-        slides[slideIndex-1].style.display = "block";  
-        dots[slideIndex-1].className += " active";
-      }
+
+    // showSlides(n) {
+    //     console.log('ShowSlides');
+    //     var i;
+    //     var slides = document.getElementsByClassName("mySlides");
+    //     if (n > slides.length) {
+    //         console.log('ShowSlides morevalue');
+    //         this.setState({slideIndex:1})
+    //     }    
+    //     if (n < 1) {
+    //         console.log('ShowSlides lessvalue');
+    //         this.setState({slideIndex:slides.length})
+    //     }
+    //     for (i = 0; i < slides.length; i++) {
+    //         slides[i].style.display = "none";  
+    //     }
+    //     var index= this.state.slideIndex;
+    //     console.log(index);
+    //     slides[index-1].style.display = "block"; 
+    //   }
 
     render(){
         return(
@@ -68,15 +70,15 @@ class productPopupPage extends React.Component{
                 </div>
                 <div className="row popup-images">
                     <div className="slideshow-container">
-                    {this.props.data.productImage.map(imgData=><div className="mySlides fade" style={{display: "block"}}><img src={imgData.imageUrl} alt={imgData.id} style={{width:"100%"}}></img></div>)}
+                    {this.props.data.productImage.map(imgData=><div className="mySlides fade" style={{display:"block"}}><img src={imgData.imageUrl} alt={imgData.id} style={{width:"100%"}}></img></div>)}
                         <span className="prev"  onClick={this.plusSlides.bind(this,-1)}>&#10094;</span>
                         <span className="next" onClick={this.plusSlides.bind(this,1)}>&#10095;</span>
                     </div>
-                    <div style={{display:"none"}}>
+                    {/* <div style={{display:"none"}}>
                         <span className="dot" onClick={this.currentSlide.bind(1)}></span> 
                         <span className="dot" onClick={this.currentSlide.bind(2)}></span> 
                         <span className="dot" onClick={this.currentSlide.bind(3)}></span> 
-                    </div>
+                    </div> */}
                 </div>
                 <div className="popup-product-details">
                     <div className="row float-parent popup-product-name-section">
