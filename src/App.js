@@ -150,7 +150,10 @@ class App extends React.Component{
     // axios.get(corsurl+Api).then((res)=>{
     //   this.setState({isLoading:false,cartData:res.data})
     // });
-    this.setState({isLoading:false,cartData:Apidata})
+    setTimeout(()=>{
+      this.setState({isLoading:false,cartData:Apidata});
+    },1500)
+   
   }
 
   searchFunction(e){
@@ -347,7 +350,8 @@ class App extends React.Component{
                   <thead className="cart-product-section-head">
                       <tr>
                           <th className="cart-product-id-head" onClick={this.sortID}> Product ID{this.state.sortProductID?<i className="fas fa-sort-numeric-down-alt icon-theme-background"></i>:<i className="fas fa-sort-numeric-up icon-theme-background"></i>} </th>
-                          <th className="cart-product-title-head"onClick={this.sortName}> Product ID{this.state.sortProductName?<i className="fas fa-sort-alpha-down-alt icon-theme-background"></i>:<i className="fas fa-sort-alpha-up icon-theme-background"></i>}</th>
+                          {/* <th className="cart-product-title-head"onClick={this.sortName}> Product Name{this.state.sortProductName?<i className="fas fa-sort-alpha-down-alt icon-theme-background"></i>:<i className="fas fa-sort-alpha-up icon-theme-background"></i>}</th> */}
+                          <th className="cart-product-title-head"> Product Name</th>
                           <th className="col-sm-none cart-product-original-price-head cart-product-price-sort-section" onClick={this.sortPrice}> Price{this.state.sortPriceText?<i className="fas fa-sort-numeric-down-alt icon-theme-background"></i>:<i className="fas fa-sort-numeric-up icon-theme-background"></i>} </th>
                           <th className="col-sm-none cart-product-date-created-head"onClick={this.sortDate}>Date {this.state.sortdateValue ?<i className="fas fa-sort-numeric-down-alt icon-theme-background"></i>:<i className="fas fa-sort-numeric-up icon-theme-background"></i>} </th>
                           <th className="cart-product-cta-head">Add Cart</th>
